@@ -75,6 +75,7 @@ WinState::WinState(SlotMachine* m)
     }
     else {
         resultMessage = "No Win!";
+        machine->messagePanelText = resultMessage;
     }
 }
 

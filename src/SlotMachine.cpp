@@ -58,7 +58,7 @@ SlotMachine::SlotMachine()
     creditDebt = 0;
 
     // Создаем барабаны
-    for (int i = 0; i < 4; ++i) {
+    for (int i = 0; i < 2; ++i) {
         reels.push_back(Reel(reelSymbolHeight));
     }
 
