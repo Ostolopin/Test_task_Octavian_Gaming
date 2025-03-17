@@ -1,0 +1,3 @@
+C:/Users/aidat/source/repos/Test_task_Octavian_Gaming/out/build/x64-release/CMakeFiles/SlotMachine.dir
+C:/Users/aidat/source/repos/Test_task_Octavian_Gaming/out/build/x64-release/CMakeFiles/edit_cache.dir
+C:/Users/aidat/source/repos/Test_task_Octavian_Gaming/out/build/x64-release/CMakeFiles/rebuild_cache.dir
