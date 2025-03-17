@@ -17,25 +17,25 @@ Test_task_Octavian_Gaming  – это симулятор слот-машины, 
 
 Структура проекта
 1. src/
-    main.cpp           # Точка входа, настройка OpenGL и GLUT, главный цикл приложения
-    SlotMachine.cpp    # Основной класс SlotMachine, отрисовка интерфейса и элементов игры
-    SlotMachine.h
-    Button.cpp         # Класс Button для отрисовки кнопок
-    Button.h
-    Reel.cpp           # Класс Reel для эмуляции вращения барабанов
-    Reel.h
-    StateMachine.cpp   # Класс StateMachine для управления состояниями игры
-    StateMachine.h
-    Vec2.h             # Простая структура для векторных координат
-    TextUtils.cpp      # Функции для измерения и обёртывания текста
-    TextUtils.h
+   main.cpp           # Точка входа, настройка OpenGL и GLUT, главный цикл приложения
+   SlotMachine.cpp    # Основной класс SlotMachine, отрисовка интерфейса и элементов игры
+   SlotMachine.h
+   Button.cpp         # Класс Button для отрисовки кнопок
+   Button.h
+   Reel.cpp           # Класс Reel для эмуляции вращения барабанов
+   Reel.h
+   StateMachine.cpp   # Класс StateMachine для управления состояниями игры
+   StateMachine.h
+   Vec2.h             # Простая структура для векторных координат
+   TextUtils.cpp      # Функции для измерения и обёртывания текста
+   TextUtils.h
    2. States/            # Папка с реализациями состояний
-         IdleState.cpp
-         IdleState.h
-         SpinningState.cpp
-         SpinningState.h
-         WinState.cpp
-         WinState.h
+      IdleState.cpp
+      IdleState.h
+      SpinningState.cpp
+      SpinningState.h
+      WinState.cpp
+      WinState.h
 Зависимости
 C++17 – язык программирования.
 OpenGL – для рендеринга графики.
