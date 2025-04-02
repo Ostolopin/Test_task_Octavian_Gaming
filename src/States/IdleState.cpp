@@ -10,27 +10,27 @@ void IdleState::handleMouse(int button, int btnState, int x, int y) {
     if (button == GLUT_LEFT_BUTTON && btnState == GLUT_DOWN) {
         Vec2 mousePos = { static_cast<float>(x), static_cast<float>(y) };
 
-        // Если баланс меньше 5:
+        // Р•СЃР»Рё Р±Р°Р»Р°РЅСЃ РјРµРЅСЊС€Рµ 5:
         if (machine->balance < 5) {
-            // Если кредит ещё не взят, проверяем кнопку кредита
+            // Р•СЃР»Рё РєСЂРµРґРёС‚ РµС‰С‘ РЅРµ РІР·СЏС‚, РїСЂРѕРІРµСЂСЏРµРј РєРЅРѕРїРєСѓ РєСЂРµРґРёС‚Р°
             if (!machine->creditTaken) {
                 if (machine->creditButton.isClicked(mousePos)) {
-                    // Берём кредит: +20 к балансу, долг 50
+                    // Р‘РµСЂС‘Рј РєСЂРµРґРёС‚: +20 Рє Р±Р°Р»Р°РЅСЃСѓ, РґРѕР»Рі 50
                     machine->balance += 20;
                     machine->creditTaken = true;
                     machine->creditDebt = 50;
                 }
             }
-            // Если кредит уже взят – не даём взять ещё
+            // Р•СЃР»Рё РєСЂРµРґРёС‚ СѓР¶Рµ РІР·СЏС‚ вЂ“ РЅРµ РґР°С‘Рј РІР·СЏС‚СЊ РµС‰С‘
             return;
         }
 
-        // Если средств достаточно, обрабатываем нажатие на Start
+        // Р•СЃР»Рё СЃСЂРµРґСЃС‚РІ РґРѕСЃС‚Р°С‚РѕС‡РЅРѕ, РѕР±СЂР°Р±Р°С‚С‹РІР°РµРј РЅР°Р¶Р°С‚РёРµ РЅР° Start
         if (machine->startButton.isClicked(mousePos)) {
             if (machine->balance >= 5) {
-                // Снимаем стоимость игры
+                // РЎРЅРёРјР°РµРј СЃС‚РѕРёРјРѕСЃС‚СЊ РёРіСЂС‹
                 machine->balance -= 5;
-                // Запускаем вращение каждого барабана с разной случайной скоростью
+                // Р—Р°РїСѓСЃРєР°РµРј РІСЂР°С‰РµРЅРёРµ РєР°Р¶РґРѕРіРѕ Р±Р°СЂР°Р±Р°РЅР° СЃ СЂР°Р·РЅРѕР№ СЃР»СѓС‡Р°Р№РЅРѕР№ СЃРєРѕСЂРѕСЃС‚СЊСЋ
                 std::random_device rd;
                 std::mt19937 gen(rd());
                 std::uniform_real_distribution<float> dist(250.f, 350.f);
@@ -50,7 +50,7 @@ void IdleState::update(float dt) {
 void IdleState::render() {
     std::string message;
 
-    // Если баланс меньше стоимости игры
+    // Р•СЃР»Рё Р±Р°Р»Р°РЅСЃ РјРµРЅСЊС€Рµ СЃС‚РѕРёРјРѕСЃС‚Рё РёРіСЂС‹
     if (machine->balance < 5) {
         if (!machine->creditTaken) {
             machine->messagePanelText = "Insufficient funds! Press Credit to get 20 Eurodollar (Debt=50 Eurodollar)";

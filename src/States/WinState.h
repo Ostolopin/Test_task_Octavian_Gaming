@@ -4,7 +4,7 @@
 #include "State.h"
 #include "../SlotMachine.h"
 
-// Состояние показа результата выигрыша
+// РЎРѕСЃС‚РѕСЏРЅРёРµ РїРѕРєР°Р·Р° СЂРµР·СѓР»СЊС‚Р°С‚Р° РІС‹РёРіСЂС‹С€Р°
 class WinState : public State {
 public:
     WinState(SlotMachine* machine);

@@ -8,8 +8,8 @@
 #include "StateMachine.h"
 #include "Vec2.h"
 
-// Класс SlotMachine объединяет графические элементы (барабаны и кнопки)
-// и содержит машину состояний
+// РљР»Р°СЃСЃ SlotMachine РѕР±СЉРµРґРёРЅСЏРµС‚ РіСЂР°С„РёС‡РµСЃРєРёРµ СЌР»РµРјРµРЅС‚С‹ (Р±Р°СЂР°Р±Р°РЅС‹ Рё РєРЅРѕРїРєРё)
+// Рё СЃРѕРґРµСЂР¶РёС‚ РјР°С€РёРЅСѓ СЃРѕСЃС‚РѕСЏРЅРёР№
 class SlotMachine {
 public:
     SlotMachine();
@@ -17,7 +17,7 @@ public:
     void render();
     void handleMouse(int button, int state, int x, int y);
 
-    // Эти публичные поля используются состояниями
+    // Р­С‚Рё РїСѓР±Р»РёС‡РЅС‹Рµ РїРѕР»СЏ РёСЃРїРѕР»СЊР·СѓСЋС‚СЃСЏ СЃРѕСЃС‚РѕСЏРЅРёСЏРјРё
     std::vector<Reel> reels;
     Button startButton;
     Button stopButton;
@@ -27,11 +27,11 @@ public:
 
     int balance;
 
-    // Кредитная система
-    bool creditTaken;   // кредит взят или нет
-    int creditDebt;     // сумма долга
+    // РљСЂРµРґРёС‚РЅР°СЏ СЃРёСЃС‚РµРјР°
+    bool creditTaken;   // РєСЂРµРґРёС‚ РІР·СЏС‚ РёР»Рё РЅРµС‚
+    int creditDebt;     // СЃСѓРјРјР° РґРѕР»РіР°
 
-    // Параметры позиционирования
+    // РџР°СЂР°РјРµС‚СЂС‹ РїРѕР·РёС†РёРѕРЅРёСЂРѕРІР°РЅРёСЏ
     Vec2 reelsStartPos;
     float reelSpacing;
     float reelSymbolHeight;

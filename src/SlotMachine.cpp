@@ -8,22 +8,22 @@
 
 SlotMachine::SlotMachine()
 {
-    // Получаем размеры окна (в полноэкранном режиме)
+    // РџРѕР»СѓС‡Р°РµРј СЂР°Р·РјРµСЂС‹ РѕРєРЅР° (РІ РїРѕР»РЅРѕСЌРєСЂР°РЅРЅРѕРј СЂРµР¶РёРјРµ)
     screenWidth = glutGet(GLUT_SCREEN_WIDTH);
     screenHeight = glutGet(GLUT_SCREEN_HEIGHT);
 
-    // Задаем позиции для барабанов по центру экрана
+    // Р—Р°РґР°РµРј РїРѕР·РёС†РёРё РґР»СЏ Р±Р°СЂР°Р±Р°РЅРѕРІ РїРѕ С†РµРЅС‚СЂСѓ СЌРєСЂР°РЅР°
     reelsStartPos = { static_cast<float>(screenWidth) / 2.f - 100.f,
                       static_cast<float>(screenHeight) / 2.f - 50.f };
     reelSpacing = 70.f;
     reelSymbolHeight = 50.f;
 
-    // Локальные переменные для отступов и размеров кнопок
+    // Р›РѕРєР°Р»СЊРЅС‹Рµ РїРµСЂРµРјРµРЅРЅС‹Рµ РґР»СЏ РѕС‚СЃС‚СѓРїРѕРІ Рё СЂР°Р·РјРµСЂРѕРІ РєРЅРѕРїРѕРє
     const int margin = 20;
     const int buttonWidth = 150;
     const int buttonHeight = 50;
 
-    // Располагаем кнопки в левом верхнем углу (координаты преобразованы в float)
+    // Р Р°СЃРїРѕР»Р°РіР°РµРј РєРЅРѕРїРєРё РІ Р»РµРІРѕРј РІРµСЂС…РЅРµРј СѓРіР»Сѓ (РєРѕРѕСЂРґРёРЅР°С‚С‹ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅС‹ РІ float)
     startButton = Button(
         Vec2{ static_cast<float>(margin),
               static_cast<float>(screenHeight) - static_cast<float>(margin) - static_cast<float>(buttonHeight) },
@@ -52,12 +52,12 @@ SlotMachine::SlotMachine()
         "Exit"
     );
 
-    // Начальный баланс
+    // РќР°С‡Р°Р»СЊРЅС‹Р№ Р±Р°Р»Р°РЅСЃ
     balance = 5;
     creditTaken = false;
     creditDebt = 0;
 
-    // Создаем барабаны
+    // РЎРѕР·РґР°РµРј Р±Р°СЂР°Р±Р°РЅС‹
     for (int i = 0; i < 2; ++i) {
         reels.push_back(Reel(reelSymbolHeight));
     }
@@ -67,26 +67,26 @@ SlotMachine::SlotMachine()
     reelsStartPos.x = (screenWidth - totalWidth) / 2.0f;
     reelsStartPos.y = static_cast<float>(screenHeight) / 2.f - 50.f;
 
-    // Начальное состояние – ожидание действия игрока
+    // РќР°С‡Р°Р»СЊРЅРѕРµ СЃРѕСЃС‚РѕСЏРЅРёРµ вЂ“ РѕР¶РёРґР°РЅРёРµ РґРµР№СЃС‚РІРёСЏ РёРіСЂРѕРєР°
     stateMachine.changeState(std::make_unique<IdleState>(this));
 }
 
 void SlotMachine::update(float dt) {
     stateMachine.update(dt);
-    // Обновляем барабаны (анимация вращения)
+    // РћР±РЅРѕРІР»СЏРµРј Р±Р°СЂР°Р±Р°РЅС‹ (Р°РЅРёРјР°С†РёСЏ РІСЂР°С‰РµРЅРёСЏ)
     for (auto& reel : reels) {
         reel.update(dt);
     }
 }
 
 void SlotMachine::render() {
-    // Отрисовка барабанов
+    // РћС‚СЂРёСЃРѕРІРєР° Р±Р°СЂР°Р±Р°РЅРѕРІ
     for (size_t i = 0; i < reels.size(); ++i) {
         Vec2 pos = { reelsStartPos.x + i * reelSpacing, reelsStartPos.y };
         reels[i].render(pos);
     }
 
-    // Отрисовка кнопок Start и Stop
+    // РћС‚СЂРёСЃРѕРІРєР° РєРЅРѕРїРѕРє Start Рё Stop
     startButton.render();
     stopButton.render();
 
@@ -95,12 +95,12 @@ void SlotMachine::render() {
     exitButton.render();
 
     float panelX = 220.f;
-    float panelY = static_cast<float>(screenHeight) - 20.f; // верхняя граница панели с отступом
-    float panelWidth = 300.f;  // ширина панели сообщений
-    float panelHeight = 100.f; // высота панели сообщений
-    float padding = 10.f;      // внутренний отступ
+    float panelY = static_cast<float>(screenHeight) - 20.f; // РІРµСЂС…РЅСЏСЏ РіСЂР°РЅРёС†Р° РїР°РЅРµР»Рё СЃ РѕС‚СЃС‚СѓРїРѕРј
+    float panelWidth = 300.f;  // С€РёСЂРёРЅР° РїР°РЅРµР»Рё СЃРѕРѕР±С‰РµРЅРёР№
+    float panelHeight = 100.f; // РІС‹СЃРѕС‚Р° РїР°РЅРµР»Рё СЃРѕРѕР±С‰РµРЅРёР№
+    float padding = 10.f;      // РІРЅСѓС‚СЂРµРЅРЅРёР№ РѕС‚СЃС‚СѓРї
 
-    // Отрисовка фона панели
+    // РћС‚СЂРёСЃРѕРІРєР° С„РѕРЅР° РїР°РЅРµР»Рё
     glPushAttrib(GL_CURRENT_BIT);
     glColor3f(0.95f, 0.95f, 0.95f);
     glBegin(GL_QUADS);
@@ -110,7 +110,7 @@ void SlotMachine::render() {
     glVertex2f(panelX, panelY);
     glEnd();
 
-    // Отрисовка рамки панели
+    // РћС‚СЂРёСЃРѕРІРєР° СЂР°РјРєРё РїР°РЅРµР»Рё
     glColor3f(0, 0, 0);
     glLineWidth(2.0f);
     glBegin(GL_LINE_LOOP);
@@ -143,21 +143,21 @@ void SlotMachine::render() {
             infoText += " | Debt: " + std::to_string(creditDebt) + " Eurodollar";
         }
 
-        // Позиция текста 
+        // РџРѕР·РёС†РёСЏ С‚РµРєСЃС‚Р° 
         float infoX = 25.f;
         float infoY = static_cast<float>(screenHeight) - 20.f - 2.f * 50.f - 50.f;
 
-        // Отступ вокруг текста
+        // РћС‚СЃС‚СѓРї РІРѕРєСЂСѓРі С‚РµРєСЃС‚Р°
         float padding = 5.f;
 
-        // Вычисляем ширину текста с помощью GLUT
+        // Р’С‹С‡РёСЃР»СЏРµРј С€РёСЂРёРЅСѓ С‚РµРєСЃС‚Р° СЃ РїРѕРјРѕС‰СЊСЋ GLUT
         int textWidth = glutBitmapLength(GLUT_BITMAP_HELVETICA_18, reinterpret_cast<const unsigned char*>(infoText.c_str()));
         float textHeight = 18.f;
 
-        // Сохраняем текущий цвет
+        // РЎРѕС…СЂР°РЅСЏРµРј С‚РµРєСѓС‰РёР№ С†РІРµС‚
         glPushAttrib(GL_CURRENT_BIT);
 
-        // Отрисовываем фон
+        // РћС‚СЂРёСЃРѕРІС‹РІР°РµРј С„РѕРЅ
         glColor3f(0.9f, 0.9f, 0.9f);
         glBegin(GL_QUADS);
         glVertex2f(infoX - padding, infoY - padding);
@@ -166,7 +166,7 @@ void SlotMachine::render() {
         glVertex2f(infoX - padding, infoY + textHeight + padding);
         glEnd();
 
-        // Отрисовываем рамку вокруг прямоугольника
+        // РћС‚СЂРёСЃРѕРІС‹РІР°РµРј СЂР°РјРєСѓ РІРѕРєСЂСѓРі РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
         glColor3f(0.0f, 0.0f, 0.0f);
         glLineWidth(2.0f);
         glBegin(GL_LINE_LOOP);
@@ -176,10 +176,10 @@ void SlotMachine::render() {
         glVertex2f(infoX - padding, infoY + textHeight + padding);
         glEnd();
 
-        // Восстанавливаем предыдущий цвет
+        // Р’РѕСЃСЃС‚Р°РЅР°РІР»РёРІР°РµРј РїСЂРµРґС‹РґСѓС‰РёР№ С†РІРµС‚
         glPopAttrib();
 
-        // Отрисовываем текст поверх фона
+        // РћС‚СЂРёСЃРѕРІС‹РІР°РµРј С‚РµРєСЃС‚ РїРѕРІРµСЂС… С„РѕРЅР°
         glColor3f(0, 0, 0);
         glRasterPos2f(infoX, infoY);
         for (char c : infoText) {
@@ -189,9 +189,9 @@ void SlotMachine::render() {
 }
 
 void SlotMachine::handleMouse(int button, int state, int x, int y) {
-    // Преобразуем координаты в Vec2
+    // РџСЂРµРѕР±СЂР°Р·СѓРµРј РєРѕРѕСЂРґРёРЅР°С‚С‹ РІ Vec2
     Vec2 mousePos = { static_cast<float>(x), static_cast<float>(y) };
-    // Если нажата кнопка Exit, завершаем программу
+    // Р•СЃР»Рё РЅР°Р¶Р°С‚Р° РєРЅРѕРїРєР° Exit, Р·Р°РІРµСЂС€Р°РµРј РїСЂРѕРіСЂР°РјРјСѓ
     if (exitButton.isClicked(mousePos)) {
         exit(0);
     }

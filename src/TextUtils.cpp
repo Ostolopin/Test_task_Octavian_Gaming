@@ -2,12 +2,12 @@
 #include <sstream>
 #include <GL/glut.h>
 
-// Функция для измерения ширины строки в пикселях
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РёР·РјРµСЂРµРЅРёСЏ С€РёСЂРёРЅС‹ СЃС‚СЂРѕРєРё РІ РїРёРєСЃРµР»СЏС…
 int getTextWidth(const std::string& text) {
     return glutBitmapLength(GLUT_BITMAP_HELVETICA_18, reinterpret_cast<const unsigned char*>(text.c_str()));
 }
 
-// Функция разбивки текста на строки с учетом максимальной ширины
+// Р¤СѓРЅРєС†РёСЏ СЂР°Р·Р±РёРІРєРё С‚РµРєСЃС‚Р° РЅР° СЃС‚СЂРѕРєРё СЃ СѓС‡РµС‚РѕРј РјР°РєСЃРёРјР°Р»СЊРЅРѕР№ С€РёСЂРёРЅС‹
 std::vector<std::string> wrapText(const std::string& text, float maxWidth) {
     std::istringstream iss(text);
     std::string word;
@@ -36,7 +36,7 @@ std::vector<std::string> wrapText(const std::string& text, float maxWidth) {
     return lines;
 }
 
-// Функция для отрисовки обёрнутого текста, начиная с координат (x, y)
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РѕС‚СЂРёСЃРѕРІРєРё РѕР±С‘СЂРЅСѓС‚РѕРіРѕ С‚РµРєСЃС‚Р°, РЅР°С‡РёРЅР°СЏ СЃ РєРѕРѕСЂРґРёРЅР°С‚ (x, y)
 void drawWrappedText(float x, float y, float maxWidth, const std::string& text) {
     std::vector<std::string> lines = wrapText(text, maxWidth);
     float lineHeight = 18.f; 

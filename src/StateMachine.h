@@ -4,7 +4,7 @@
 #include <memory>
 #include "States/State.h"
 
-// Класс StateMachine для управления текущим состоянием игры
+// РљР»Р°СЃСЃ StateMachine РґР»СЏ СѓРїСЂР°РІР»РµРЅРёСЏ С‚РµРєСѓС‰РёРј СЃРѕСЃС‚РѕСЏРЅРёРµРј РёРіСЂС‹
 class StateMachine {
 public:
     void changeState(std::unique_ptr<State> newState);

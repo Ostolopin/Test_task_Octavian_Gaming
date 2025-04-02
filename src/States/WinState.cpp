@@ -9,7 +9,7 @@
 WinState::WinState(SlotMachine* m)
     : machine(m), displayTime(2.f), elapsedTime(0.f)
 {
-    // Определяем базовые значения для символов (от A до E)
+    // РћРїСЂРµРґРµР»СЏРµРј Р±Р°Р·РѕРІС‹Рµ Р·РЅР°С‡РµРЅРёСЏ РґР»СЏ СЃРёРјРІРѕР»РѕРІ (РѕС‚ A РґРѕ E)
     std::map<std::string, int> symbolValues{
         {"A", 1},
         {"B", 2},
@@ -18,7 +18,7 @@ WinState::WinState(SlotMachine* m)
         {"E", 5}
     };
 
-    // Собираем частоты появления центральных символов со всех барабанов
+    // РЎРѕР±РёСЂР°РµРј С‡Р°СЃС‚РѕС‚С‹ РїРѕСЏРІР»РµРЅРёСЏ С†РµРЅС‚СЂР°Р»СЊРЅС‹С… СЃРёРјРІРѕР»РѕРІ СЃРѕ РІСЃРµС… Р±Р°СЂР°Р±Р°РЅРѕРІ
     std::map<std::string, int> freq;
     for (const auto& reel : machine->reels) {
         std::string sym = reel.getCenterSymbol();
@@ -26,21 +26,21 @@ WinState::WinState(SlotMachine* m)
     }
 
     int winAmount = 0;
-    // Рассчитываем выигрыш для каждого символа
+    // Р Р°СЃСЃС‡РёС‚С‹РІР°РµРј РІС‹РёРіСЂС‹С€ РґР»СЏ РєР°Р¶РґРѕРіРѕ СЃРёРјРІРѕР»Р°
     for (const auto& pair : freq) {
         int count = pair.second;
         int base = symbolValues[pair.first];
         if (count == 2) {
-            // Для двух одинаковых: сумма = base + base
+            // Р”Р»СЏ РґРІСѓС… РѕРґРёРЅР°РєРѕРІС‹С…: СЃСѓРјРјР° = base + base
             winAmount += 2 * base;
         }
         else if (count >= 3) {
             if (base == 1) {
-                // Для A: если выпало более двух, выигрыш = count * 1
+                // Р”Р»СЏ A: РµСЃР»Рё РІС‹РїР°Р»Рѕ Р±РѕР»РµРµ РґРІСѓС…, РІС‹РёРіСЂС‹С€ = count * 1
                 winAmount += count;
             }
             else {
-                // Для остальных: выигрыш = base^count
+                // Р”Р»СЏ РѕСЃС‚Р°Р»СЊРЅС‹С…: РІС‹РёРіСЂС‹С€ = base^count
                 int contribution = 1;
                 for (int i = 0; i < count; ++i) {
                     contribution *= base;
@@ -53,7 +53,7 @@ WinState::WinState(SlotMachine* m)
     if (winAmount > 0) {
         int netWin = winAmount;
         std::ostringstream oss;
-        // Если кредит взят, 50% выигрыша идет на погашение долга
+        // Р•СЃР»Рё РєСЂРµРґРёС‚ РІР·СЏС‚, 50% РІС‹РёРіСЂС‹С€Р° РёРґРµС‚ РЅР° РїРѕРіР°С€РµРЅРёРµ РґРѕР»РіР°
         if (machine->creditTaken) {
             int repayment = winAmount / 2;
             int appliedRepayment = std::min(repayment, machine->creditDebt);

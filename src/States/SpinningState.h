@@ -4,7 +4,7 @@
 #include "State.h"
 #include "../SlotMachine.h"
 
-// Состояние вращения барабанов
+// РЎРѕСЃС‚РѕСЏРЅРёРµ РІСЂР°С‰РµРЅРёСЏ Р±Р°СЂР°Р±Р°РЅРѕРІ
 class SpinningState : public State {
 public:
     SpinningState(SlotMachine* machine);

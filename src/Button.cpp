@@ -1,4 +1,4 @@
-﻿#include "Button.h"
+#include "Button.h"
 #include <GL/glut.h>
 
 Button::Button() : position({ 0,0 }), size({ 0,0 }), label("") {}

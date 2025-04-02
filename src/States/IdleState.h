@@ -4,7 +4,7 @@
 #include "State.h"
 #include "../SlotMachine.h"
 
-// Состояние ожидания действия игрока
+// РЎРѕСЃС‚РѕСЏРЅРёРµ РѕР¶РёРґР°РЅРёСЏ РґРµР№СЃС‚РІРёСЏ РёРіСЂРѕРєР°
 class IdleState : public State {
 public:
     IdleState(SlotMachine* machine);

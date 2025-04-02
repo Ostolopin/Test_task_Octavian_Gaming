@@ -7,7 +7,7 @@ Reel::Reel(float symHeight)
     : symbolHeight(symHeight), offset(0.f), speed(0.f),
     spinning(false), stopping(false), deceleration(200.f)
 {
-    // Инициализация набора символов
+    // РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РЅР°Р±РѕСЂР° СЃРёРјРІРѕР»РѕРІ
     symbols = { "A", "B", "C", "D", "E" };
 }
 
@@ -29,7 +29,7 @@ void Reel::update(float dt) {
                 speed = 0.f;
                 spinning = false;
                 stopping = false;
-                // Выравнивание смещения до ближайшей позиции (кратной symbolHeight)
+                // Р’С‹СЂР°РІРЅРёРІР°РЅРёРµ СЃРјРµС‰РµРЅРёСЏ РґРѕ Р±Р»РёР¶Р°Р№С€РµР№ РїРѕР·РёС†РёРё (РєСЂР°С‚РЅРѕР№ symbolHeight)
                 float remainder = std::fmod(offset, symbolHeight);
                 if (remainder < symbolHeight / 2)
                     offset -= remainder;
@@ -46,8 +46,8 @@ void Reel::update(float dt) {
 }
 
 void Reel::render(const Vec2& position) {
-    // Отрисовка фона барабана
-    glColor3f(0.863f, 0.863f, 0.863f); // цвет (220,220,220)
+    // РћС‚СЂРёСЃРѕРІРєР° С„РѕРЅР° Р±Р°СЂР°Р±Р°РЅР°
+    glColor3f(0.863f, 0.863f, 0.863f); // С†РІРµС‚ (220,220,220)
     glBegin(GL_QUADS);
     glVertex2f(position.x, position.y);
     glVertex2f(position.x + 50, position.y);
@@ -55,7 +55,7 @@ void Reel::render(const Vec2& position) {
     glVertex2f(position.x, position.y + symbolHeight);
     glEnd();
 
-    // Рисуем контур барабана
+    // Р РёСЃСѓРµРј РєРѕРЅС‚СѓСЂ Р±Р°СЂР°Р±Р°РЅР°
     glColor3f(0, 0, 0);
     glLineWidth(2.0f);
     glBegin(GL_LINE_LOOP);
@@ -65,7 +65,7 @@ void Reel::render(const Vec2& position) {
     glVertex2f(position.x, position.y + symbolHeight);
     glEnd();
 
-    // Отрисовка символов
+    // РћС‚СЂРёСЃРѕРІРєР° СЃРёРјРІРѕР»РѕРІ
     int totalSymbols = symbols.size();
     int startIndex = static_cast<int>(offset / symbolHeight);
     float yOffset = -(std::fmod(offset, symbolHeight));
@@ -75,7 +75,7 @@ void Reel::render(const Vec2& position) {
         std::string sym = symbols[symbolIndex];
 
         glColor3f(0, 0, 0);
-        float textX = position.x + 25 - (sym.size() * 4); // приблизительное центрирование
+        float textX = position.x + 25 - (sym.size() * 4); // РїСЂРёР±Р»РёР·РёС‚РµР»СЊРЅРѕРµ С†РµРЅС‚СЂРёСЂРѕРІР°РЅРёРµ
         float textY = position.y + symbolHeight / 2 + yOffset + i * symbolHeight - 5;
         glRasterPos2f(textX, textY);
         for (char c : sym) {

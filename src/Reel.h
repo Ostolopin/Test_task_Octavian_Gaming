@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-// Класс Reel реализует один барабан слот-машины
+// РљР»Р°СЃСЃ Reel СЂРµР°Р»РёР·СѓРµС‚ РѕРґРёРЅ Р±Р°СЂР°Р±Р°РЅ СЃР»РѕС‚-РјР°С€РёРЅС‹
 class Reel {
 public:
     Reel(float symbolHeight);
@@ -15,13 +15,13 @@ public:
     std::string getCenterSymbol() const;
     bool isSpinning() const;
 private:
-    std::vector<std::string> symbols; // Набор символов
-    float offset;       // Текущее смещение для анимации
-    float speed;        // Текущая скорость вращения
-    bool spinning;      // Флаг вращения
-    bool stopping;      // Флаг замедления
-    float deceleration; // Коэффициент замедления (пикселей/сек^2)
-    float symbolHeight; // Высота одного символа (для выравнивания)
+    std::vector<std::string> symbols; // РќР°Р±РѕСЂ СЃРёРјРІРѕР»РѕРІ
+    float offset;       // РўРµРєСѓС‰РµРµ СЃРјРµС‰РµРЅРёРµ РґР»СЏ Р°РЅРёРјР°С†РёРё
+    float speed;        // РўРµРєСѓС‰Р°СЏ СЃРєРѕСЂРѕСЃС‚СЊ РІСЂР°С‰РµРЅРёСЏ
+    bool spinning;      // Р¤Р»Р°Рі РІСЂР°С‰РµРЅРёСЏ
+    bool stopping;      // Р¤Р»Р°Рі Р·Р°РјРµРґР»РµРЅРёСЏ
+    float deceleration; // РљРѕСЌС„С„РёС†РёРµРЅС‚ Р·Р°РјРµРґР»РµРЅРёСЏ (РїРёРєСЃРµР»РµР№/СЃРµРє^2)
+    float symbolHeight; // Р’С‹СЃРѕС‚Р° РѕРґРЅРѕРіРѕ СЃРёРјРІРѕР»Р° (РґР»СЏ РІС‹СЂР°РІРЅРёРІР°РЅРёСЏ)
 };
 
 #endif // REEL_H

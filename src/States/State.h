@@ -1,7 +1,7 @@
 #ifndef STATE_H
 #define STATE_H
 
-// Абстрактный класс состояния с общим интерфейсом
+// РђР±СЃС‚СЂР°РєС‚РЅС‹Р№ РєР»Р°СЃСЃ СЃРѕСЃС‚РѕСЏРЅРёСЏ СЃ РѕР±С‰РёРј РёРЅС‚РµСЂС„РµР№СЃРѕРј
 class State {
 public:
     virtual void handleMouse(int button, int state, int x, int y) = 0;

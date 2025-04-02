@@ -2,7 +2,7 @@
 #include "SlotMachine.h"
 #include <chrono>
 
-// Глобальный указатель на слот-машину
+// Р“Р»РѕР±Р°Р»СЊРЅС‹Р№ СѓРєР°Р·Р°С‚РµР»СЊ РЅР° СЃР»РѕС‚-РјР°С€РёРЅСѓ
 SlotMachine* slotMachine = nullptr;
 std::chrono::steady_clock::time_point previousTime;
 
@@ -17,7 +17,7 @@ void display() {
 }
 
 void idle() {
-    // Расчёт dt (в секундах)
+    // Р Р°СЃС‡С‘С‚ dt (РІ СЃРµРєСѓРЅРґР°С…)
     auto currentTime = std::chrono::steady_clock::now();
     float dt = std::chrono::duration<float>(currentTime - previousTime).count();
     previousTime = currentTime;
@@ -54,7 +54,7 @@ int main(int argc, char** argv) {
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
     glutInitWindowSize(800, 600);
     glutCreateWindow("Slot Machine");
-    glutFullScreen(); // переключаем в полноэкранный режим
+    glutFullScreen(); // РїРµСЂРµРєР»СЋС‡Р°РµРј РІ РїРѕР»РЅРѕСЌРєСЂР°РЅРЅС‹Р№ СЂРµР¶РёРј
 
     init();
 
